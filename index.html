@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QA-CSM Drive Roadmap</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f7fb; direction: rtl; min-height: 100vh; }
+
+  .page-header {
+    background: #653165;
+    color: #fff;
+    text-align: center;
+    padding: 22px 24px 16px;
+    border-bottom: 4px solid #00A4A6;
+  }
+  .page-header h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .page-header p  { font-size: 12px; opacity: .75; }
+
+  .map-wrap {
+    width: 100%;
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 0 16px;
+  }
+
+  .hub {
+    background: #653165;
+    color: #fff;
+    border-radius: 16px;
+    padding: 14px 24px;
+    text-align: center;
+    width: 220px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 12px rgba(101,49,101,.25);
+  }
+  .hub-title { font-size: 15px; font-weight: 700; }
+
+  .svg-connector {
+    display: block;
+    width: 100%;
+    height: 60px;
+    overflow: visible;
+  }
+
+  .branches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .branch-zone {
+    background: #fff;
+    border-radius: 14px;
+    border: 0.5px solid #e0dde8;
+    overflow: hidden;
+  }
+
+  .branch-head {
+    padding: 10px 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .branch-head .icon  { font-size: 15px; }
+  .branch-head .label { font-size: 13px; font-weight: 700; }
+  .branch-head .count { font-size: 10px; opacity: .75; margin-right: auto; background: rgba(255,255,255,.2); padding: 2px 7px; border-radius: 10px; }
+
+  .branch-files { padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+
+  .file-card {
+    border-radius: 8px;
+    padding: 8px 11px;
+    border: 0.5px solid #e0dde8;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+  }
+  .file-card:hover { background: #f0f0f0; border-color: #bbb; }
+  .file-card.highlight { border-width: 1.5px; background: #fff; }
+
+  .file-icon-box { font-size: 15px; flex-shrink: 0; }
+  .file-info { flex: 1; min-width: 0; }
+  .file-name { font-size: 11px; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; direction: ltr; text-align: right; }
+  .file-tag  { font-size: 9px; padding: 1px 6px; border-radius: 8px; display: inline-block; margin-top: 3px; }
+
+  /* branch colors */
+  .b-joda  .branch-head { background: #653165; }
+  .b-joda  .file-card.highlight { border-color: #653165; }
+  .b-joda  .ft { background: #EFE5EF; color: #653165; }
+
+  .b-acad  .branch-head { background: #00838F; }
+  .b-acad  .file-card.highlight { border-color: #00A4A6; }
+  .b-acad  .ft { background: #D9F2F2; color: #005F60; }
+
+  .b-calls .branch-head { background: #444; }
+  .b-calls .file-card.highlight { border-color: #00A4A6; }
+  .b-calls .ft       { background: #D9F2F2; color: #005F60; }
+  .b-calls .ft.gray  { background: #f0f0f0; color: #555; }
+
+  .b-cases .branch-head { background: #BA7517; }
+  .b-cases .file-card.highlight { border-color: #EF9F27; }
+  .b-cases .ft { background: #FAEEDA; color: #633806; }
+
+  .page-footer {
+    text-align: center;
+    padding: 20px 16px 32px;
+    font-size: 11px;
+    color: #888;
+    border-top: 0.5px solid #ddd;
+    margin-top: 24px;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="page-header">
+<h1>QA-CSM Drive Roadmap</h1>
+
+</div>
+<div class="map-wrap">
+<div class="hub">
+<div class="hub-title">QA — CSM Drive</div>
+</div>
+<svg class="svg-connector" preserveaspectratio="none" viewbox="0 0 800 60">
+<line stroke="#bbb" stroke-width="1.5" x1="400" x2="400" y1="0" y2="30"></line>
+<line stroke="#bbb" stroke-width="1.5" x1="200" x2="600" y1="30" y2="30"></line>
+<line stroke="#bbb" stroke-width="1.5" x1="200" x2="200" y1="30" y2="60"></line>
+<line stroke="#bbb" stroke-width="1.5" x1="400" x2="400" y1="30" y2="60"></line>
+<line stroke="#bbb" stroke-width="1.5" x1="600" x2="600" y1="30" y2="60"></line>
+<line stroke="#bbb" stroke-dasharray="3,2" stroke-width="1.5" x1="200" x2="100" y1="30" y2="30"></line>
+<line stroke="#bbb" stroke-width="1.5" x1="100" x2="100" y1="30" y2="60"></line>
+</svg>
+<div class="branches">
+<!-- جودة -->
+<div class="branch-zone b-joda">
+<div class="branch-head">
+<span class="icon">🔍</span>
+<span class="label">جودة</span>
+<span class="count">7 ملفات</span>
+</div>
+<div class="branch-files">
+<a class="file-card highlight" href="https://app.powerbi.com/view?r=eyJrIjoiNDg1YjI5NzctNThlNi00MzdjLWI5ZjMtZjliZTU3NmU0NDg3IiwidCI6ImY2YTZlNTQzLTRlNzctNGNkNi1hNDZkLTBjYTkzYTYyNWZkNSIsImMiOjl9" target="_blank">
+<div class="file-icon-box">📊</div>
+<div class="file-info">
+<div class="file-name">QA Dashboard — CSM</div>
+<span class="file-tag ft">لوحة رئيسية</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/spreadsheets/d/1DT2OEJVCUcUWiKl1oLEnrpR_ELnURWM4/edit?gid=888326678#gid=888326678" target="_blank">
+<div class="file-icon-box">📋</div>
+<div class="file-info">
+<div class="file-name">01_IQS_Criteria_CSM</div>
+<span class="file-tag ft">xlsx · معيار التقييم</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/forms/d/e/1FAIpQLSd3E-bpvSGYu7JZ78wOIReQSNxhPBwCrji4EcZ50HeNhyrZSA/viewform" target="_blank">
+<div class="file-icon-box">📝</div>
+<div class="file-info">
+<div class="file-name">05_QA_Review_CSM</div>
+<span class="file-tag ft">Google Form</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/spreadsheets/d/1bejFkCRPOYc5s3TTbnPsaMwPsZiMVysa-tvL8axwi-Y/edit?gid=1362731311#gid=1362731311" target="_blank">
+<div class="file-icon-box">📬</div>
+<div class="file-info">
+<div class="file-name">05_QA_Review_CSM_Responses</div>
+<span class="file-tag ft">Google Sheets</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/document/d/1WVvMa4V3o8UxvLYUliKEfcrBS62XfNtz/edit" target="_blank">
+<div class="file-icon-box">📄</div>
+<div class="file-info">
+<div class="file-name">03_Development_Plan_CSM</div>
+<span class="file-tag ft">docx</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/document/d/1I5HDHwcspO3zv9eOgsOsUzoThLSe0hIX/edit" target="_blank">
+<div class="file-icon-box">📋</div>
+<div class="file-info">
+<div class="file-name">04_QA_Review_Form_CSM</div>
+<span class="file-tag ft">docx</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/spreadsheets/d/1U_zAvqyVq6H_GE23G1_AYu-L9uRXZEx7/edit?gid=1908509704#gid=1908509704&amp;range=A20:Y20" target="_blank">
+<div class="file-icon-box">☎️</div>
+<div class="file-info">
+<div class="file-name">09_QBR_Call_Evaluation</div>
+<span class="file-tag ft">xlsx</span>
+</div>
+</a>
+</div>
+</div>
+<!-- أكاديمية -->
+<div class="branch-zone b-acad">
+<div class="branch-head">
+<span class="icon">🎓</span>
+<span class="label">أكاديمية</span>
+<span class="count">5 ملفات</span>
+</div>
+<div class="branch-files">
+<a class="file-card highlight" href="https://fyousef-2023.github.io/csm-academy/#phone-tip" target="_blank">
+<div class="file-icon-box">🌐</div>
+<div class="file-info">
+<div class="file-name">CSM Academy — Web</div>
+<span class="file-tag ft">صفحة ويب</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/spreadsheets/d/1co1QpR4CCnTBJvsDttQUQs3B9I8LPxhgxUzYT35Ev8U/edit?gid=1234721006#gid=1234721006" target="_blank">
+<div class="file-icon-box">🎓</div>
+<div class="file-info">
+<div class="file-name">11_CSM_Academy</div>
+<span class="file-tag ft">xlsx · مرجع تدريبي</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/document/d/1WRT8sxSBTXp7Bh_xkN4OUZpcJLToYiKK/edit?rtpof=true&amp;tab=t.0" target="_blank">
+<div class="file-icon-box">📘</div>
+<div class="file-info">
+<div class="file-name">02_Playbook_CSM</div>
+<span class="file-tag ft">docx</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/document/d/1jnzOEG-IuWtfURz47Iiwo6ixFbl0ltMS/edit?rtpof=true&amp;tab=t.0" target="_blank">
+<div class="file-icon-box">💚</div>
+<div class="file-info">
+<div class="file-name">06_Health_Score_Guide</div>
+<span class="file-tag ft">docx</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/document/d/1ogeDAapirMqankAHUIalxdbupN0TBvVD/edit" target="_blank">
+<div class="file-icon-box">🗺️</div>
+<div class="file-info">
+<div class="file-name">08_CSM_Stages_Report</div>
+<span class="file-tag ft">docx · 35 مرحلة فرعية</span>
+</div>
+</a>
+</div>
+</div>
+<!-- اتصالات -->
+<div class="branch-zone b-calls">
+<div class="branch-head">
+<span class="icon">📞</span>
+<span class="label">اتصالات</span>
+<span class="count">3 ملفات</span>
+</div>
+<div class="branch-files">
+<a class="file-card highlight" href="https://script.google.com/a/macros/rewaa.com/s/AKfycbzV7wNwWO725JsZX6EGxb2vULJoU_OowB5A4YVCz4w/dev" target="_blank">
+<div class="file-icon-box">📊</div>
+<div class="file-info">
+<div class="file-name">12_CSM_Calls_Dashboard</div>
+<span class="file-tag ft">Sheets + Web App</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/spreadsheets/d/16Z2cNQd0MRFPbCQBHtDZMYkKeMDAXt1-DYbqmnUXzsU/edit?gid=1068665817#gid=1068665817" target="_blank">
+<div class="file-icon-box">📋</div>
+<div class="file-info">
+<div class="file-name">12_CSM_Team_Calls_Report</div>
+<span class="file-tag ft">Google Sheets</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/spreadsheets/d/1lY8pTh_zCQqN85j7nALQ-TSGkq11m98e/edit?gid=1298971576#gid=1298971576" target="_blank">
+<div class="file-icon-box">📉</div>
+<div class="file-info">
+<div class="file-name">10_CSM_Calls_Activation_Analysis</div>
+<span class="file-tag ft gray">xlsx</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Cases -->
+<div class="branch-zone b-cases">
+<div class="branch-head">
+<span class="icon">⚠️</span>
+<span class="label">Cases</span>
+<span class="count">2 ملفات</span>
+</div>
+<div class="branch-files">
+<a class="file-card highlight" href="https://docs.google.com/document/d/1lXme3a_zAeIe3hhlQLSHrHiYzXekp1dy/edit" target="_blank">
+<div class="file-icon-box">📄</div>
+<div class="file-info">
+<div class="file-name">14_Cases_Issues_Report</div>
+<span class="file-tag ft">docx · تقرير الحالات</span>
+</div>
+</a>
+<a class="file-card" href="https://docs.google.com/spreadsheets/d/1jaIxeGD7bdJQbc8RlK6o-jznVWStsNUtK0ltssGJOEk/edit?gid=1406689722#gid=1406689722" target="_blank">
+<div class="file-icon-box">📊</div>
+<div class="file-info">
+<div class="file-name">14_Cases_Wrong_Routing_Q2_2026</div>
+<span class="file-tag ft">xlsx</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="page-footer">
+    إعداد: قسم الجودة — فريق نجاح العملاء  |  رِواء  |  النسخة 1.0<br/>
+    QA – CSM  |  Rewaa
+  </div>
+</div>
+</body>
+</html>
